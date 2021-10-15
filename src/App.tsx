@@ -1,10 +1,13 @@
 import React from 'react'
+import { Card, Form } from 'react-bootstrap'
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello!</h1>
-    </div>
+    <Card>
+      <Card.Body>
+        <Form.Control></Form.Control>
+      </Card.Body>
+    </Card>
   )
 }
 
