@@ -6,12 +6,12 @@ const App = () => {
     <Container fluid>
       <h4>タスク管理</h4>
       <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formInputText1">
           <Form.Label>ToDo</Form.Label>
           <Form.Control type="text" placeholder="Enter ToDo" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="formInputDate1">
           <Form.Label>期限</Form.Label>
           <Form.Control type="date" />
         </Form.Group>
