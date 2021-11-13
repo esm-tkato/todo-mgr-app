@@ -1,29 +1,30 @@
-type toDoItem = {
+export type task = {
     id: number
-    todo: string | undefined
-    limit: string | undefined
+    todo?: string
+    limit?: string
 }
 
-type action = {
+export type action = {
     type: string
-    toDo: string
-    limit: string
+    id?: number
+    toDo?: string
+    limit?: string
 }
 
-const todos = (state:toDoItem[], action: action) => {
+const tasks = (state: task[], action: action) => {
     switch(action.type) {
-        case 'CREATE_TODO':
-            const toDoItem = { todo: action.toDo, limit: action.limit }
+        case 'CREATE_TASK':
+            const taskItem = { todo: action.toDo, limit: action.limit }
             const length = state.length
             const id = length === 0 ? 1 : state[length - 1].id + 1
-            return [...state, { id: id, ...toDoItem }]
-        case 'DELETE_TODO':
-            return state
-        case 'DELETE_ALL_TODOS':
+            return [...state, { id: id, ...taskItem }]
+        case 'DELETE_TASK':
+            return state.filter(task => task.id !== action.id)
+        case 'DELETE_ALL_TASKS':
             return []
         default:
             return state
     }
 }
 
-export default todos
+export default tasks

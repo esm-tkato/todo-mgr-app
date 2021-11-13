@@ -1,6 +1,7 @@
 import React, { MouseEvent, useReducer, useState } from 'react'
 import { Button, Container, Form, Table } from 'react-bootstrap'
 
+import Task from './Task'
 import reducer from '../reducers'
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
     e.preventDefault()
 
     dispatch({
-      type: 'CREATE_TODO',
+      type: 'CREATE_TASK',
       toDo,
       limit
     })
@@ -20,8 +21,6 @@ const App = () => {
     setToDo('')
     setLimit('')
   }
-
-  console.log({state})
 
   return (
     <Container fluid>
@@ -37,21 +36,22 @@ const App = () => {
           <Form.Control type="date" value={limit} onChange={e => setLimit(e.target.value)} />
         </Form.Group>
         <Button variant="primary" type="button" onClick={addToDo}>
-          ToDo追加
+          タスク追加
         </Button>
       </Form>
 
-      <h4>ToDo一覧</h4>
+      <h4>タスク一覧</h4>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
             <th>ToDo</th>
             <th>期限</th>
-            <th></th>
+            <th>削除</th>
           </tr>
         </thead>
         <tbody>
+          { state.map((task, index) => (<Task key={index} task={task} dispatch={dispatch}/>))}
         </tbody>
       </Table>
     </Container>
