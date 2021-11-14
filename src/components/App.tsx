@@ -22,6 +22,8 @@ const App = () => {
     setLimit('')
   }
 
+  const unCreatable = toDo === '' || limit === ''
+
   return (
     <Container fluid>
       <h4>タスク管理</h4>
@@ -35,7 +37,7 @@ const App = () => {
           <Form.Label>期限</Form.Label>
           <Form.Control type="date" value={limit} onChange={e => setLimit(e.target.value)} />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={addToDo}>
+        <Button variant="primary" type="button" onClick={addToDo} disabled={unCreatable}>
           タスク追加
         </Button>
       </Form>

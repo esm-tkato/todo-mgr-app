@@ -20,7 +20,8 @@ type TaskProps = {
 const Task = (props: TaskProps) => {
     const id = props.task.id
     const handleClickDeleteButton = () => {
-        props.dispatch({ type: 'DELETE_TASK', id: id})
+        const result = window.confirm(`タスク(id=${id})を本当に削除しても良いですか？`)
+        if (result) props.dispatch({ type: 'DELETE_TASK', id: id})
     }
 
     return (
