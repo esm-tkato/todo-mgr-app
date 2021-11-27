@@ -1,6 +1,8 @@
 import React, { MouseEvent, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
+import { CREATE_TASK } from '../actions'
+
 type task = {
     id: number
     todo?: string
@@ -26,7 +28,7 @@ const TaskForm = (props: TaskProps) => {
       e.preventDefault()
   
       props.dispatch({
-        type: 'CREATE_TASK',
+        type: CREATE_TASK,
         toDo,
         limit
       })

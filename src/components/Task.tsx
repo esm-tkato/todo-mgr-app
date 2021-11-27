@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 
+import { DELETE_TASK } from '../actions'
+
 type TaskType = {
     id: number
     todo?: string
@@ -21,7 +23,7 @@ const Task = (props: TaskProps) => {
     const id = props.task.id
     const handleClickDeleteButton = () => {
         const result = window.confirm(`タスク(id=${id})を本当に削除しても良いですか？`)
-        if (result) props.dispatch({ type: 'DELETE_TASK', id: id})
+        if (result) props.dispatch({ type: DELETE_TASK, id: id})
     }
 
     return (
