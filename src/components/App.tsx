@@ -3,17 +3,21 @@ import { Container } from 'react-bootstrap'
 
 import TaskForm from './TaskForm'
 import Tasks from './Tasks'
-import AppContext from '../contexts/AppContext'
+import AppContext, { appContextType } from '../contexts/AppContext'
 import reducer from '../reducers'
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
+  const appContextValue: appContextType = {
+    state: state,
+    dispatch: dispatch
+  }
 
   return (
-    <AppContext.Provider value={'aaa'}>
+    <AppContext.Provider value={appContextValue}>
       <Container fluid>
-        <TaskForm state={state} dispatch={dispatch} />
-        <Tasks state={state} dispatch={dispatch} />
+        <TaskForm />
+        <Tasks />
       </Container>
     </AppContext.Provider>
   )

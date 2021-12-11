@@ -1,25 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Table } from 'react-bootstrap'
 
 import Task from './Task'
+import AppContext, { appContextType } from '../contexts/AppContext'
 
-type task = {
-    id: number
-    todo?: string
-    limit?: string
-}
+const Tasks = () => {
+    const appContextValue: appContextType | undefined = useContext(AppContext)
 
-type DispatchAction = {
-    type: string
-    id: number
-}
-
-type TaskProps = {
-    state: task[]
-    dispatch: React.Dispatch<DispatchAction>
-}
-
-const Tasks = (props: TaskProps) => {
     return (
         <>
             <h4>タスク一覧</h4>
@@ -33,7 +20,7 @@ const Tasks = (props: TaskProps) => {
                 </tr>
             </thead>
             <tbody>
-                { props.state.map((task, index) => (<Task key={index} task={task} dispatch={props.dispatch}/>))}
+                { appContextValue && appContextValue.state.map((task, index) => (<Task key={index} task={task} />))}
             </tbody>
             </Table>
         </>
