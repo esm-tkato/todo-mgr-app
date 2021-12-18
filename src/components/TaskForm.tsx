@@ -2,17 +2,18 @@ import React, { MouseEvent, useContext, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 import { CREATE_TASK } from '../actions'
-import AppContext, { appContextType } from '../contexts/AppContext'
+import { DispatchContext } from '../contexts/AppContext'
+import { action } from '../reducers'
 
 const TaskForm = () => {
-    const appContextValue: appContextType | undefined = useContext(AppContext)
+    const dispatchValue: React.Dispatch<action> | undefined = useContext(DispatchContext)
     const [toDo, setToDo] = useState('')
     const [limit, setLimit] = useState('')
   
     const addToDo = (e: MouseEvent<HTMLButtonElement> ) => {
       e.preventDefault()
   
-      if (appContextValue) {appContextValue.dispatch({
+      if (dispatchValue) {dispatchValue({
         type: CREATE_TASK,
         toDo,
         limit

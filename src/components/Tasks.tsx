@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { Table } from 'react-bootstrap'
 
 import Task from './Task'
-import AppContext, { appContextType } from '../contexts/AppContext'
+import { StateContext } from '../contexts/AppContext'
+import { task } from '../reducers'
 
 const Tasks = () => {
-    const appContextValue: appContextType | undefined = useContext(AppContext)
+    const stateValue: task[] | undefined = useContext(StateContext)
+    // console.log(stateValue)
 
     return (
         <>
@@ -20,7 +22,7 @@ const Tasks = () => {
                 </tr>
             </thead>
             <tbody>
-                { appContextValue && appContextValue.state.map((task, index) => (<Task key={index} task={task} />))}
+                { stateValue && stateValue.map((task, index) => (<Task key={index} task={task} />))}
             </tbody>
             </Table>
         </>
