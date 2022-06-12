@@ -15,7 +15,7 @@ const Tasks = () => {
             if (dispatchValue) await dispatchValue({ type: INIT_TASK})
         }
         fetchToDos()
-    }, [])
+    }, [dispatchValue])
 
     const stateValue: task[] | undefined = useContext(StateContext)
     console.log('stateValue:', stateValue)
