@@ -3,10 +3,10 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 import { CREATE_TASK } from '../actions'
 import { DispatchContext } from '../contexts/AppContext'
-import { action } from '../reducers'
+import { Action } from '../reducers'
 
 const TaskForm = () => {
-    const dispatchValue: React.Dispatch<action> | undefined = useContext(DispatchContext)
+    const dispatchValue: React.Dispatch<Action> | undefined = useContext(DispatchContext)
     const [toDo, setToDo] = useState('')
     const [limit, setLimit] = useState('')
   
@@ -15,9 +15,7 @@ const TaskForm = () => {
   
       if (dispatchValue) {dispatchValue({
         type: CREATE_TASK,
-        toDo,
-        limit
-      })}
+        payload: [{id: 0, todo: toDo, limit: limit}]})}
   
       setToDo('')
       setLimit('')

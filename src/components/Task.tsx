@@ -3,21 +3,21 @@ import { Button } from 'react-bootstrap'
 
 import { DELETE_TASK } from '../actions'
 import { DispatchContext } from '../contexts/AppContext'
-import { task } from '../reducers'
-import { action } from '../reducers'
+import { TaskType } from '../reducers'
+import { Action } from '../reducers'
 
 type TaskProps = {
     key: number
-    task: task
+    task: TaskType
 }
 
 const Task = (props: TaskProps) => {
-    const dispatchValue: React.Dispatch<action> | undefined = useContext(DispatchContext)
+    const dispatchValue: React.Dispatch<Action> | undefined = useContext(DispatchContext)
 
     const id = props.task.id
     const handleClickDeleteButton = () => {
         const result = window.confirm(`タスク(id=${id})を本当に削除しても良いですか？`)
-        if (result && dispatchValue) dispatchValue({ type: DELETE_TASK, id: id})
+        if (result && dispatchValue) dispatchValue({ type: DELETE_TASK, payload: [{id: id, todo:'', limit: ''}]})
     }
 
     return (

@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { task, action } from '../reducers'
+import { TaskType, Action } from '../reducers'
 
-export const StateContext = createContext<task[] | undefined>(undefined)
-export const DispatchContext = createContext<React.Dispatch<action> | undefined>(undefined)
+export const StateContext = createContext<TaskType[] | undefined>(undefined)
+export const DispatchContext = createContext<React.Dispatch<Action> | undefined>(undefined)
