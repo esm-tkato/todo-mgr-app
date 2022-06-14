@@ -1,23 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Col, Container, Row, Table } from 'react-bootstrap'
 
 import Task from './Task'
 import { StateContext } from '../contexts/AppContext'
-import { task } from '../reducers'
-import { INIT_TASK } from '../actions'
-import { DispatchContext } from '../contexts/AppContext'
-import { action } from '../reducers'
+import { TaskType } from '../reducers'
 
 const Tasks = () => {
-    const dispatchValue: React.Dispatch<action> | undefined = useContext(DispatchContext)
-    useEffect(() => {
-        async function fetchToDos() {
-            if (dispatchValue) await dispatchValue({ type: INIT_TASK})
-        }
-        fetchToDos()
-    }, [dispatchValue])
-
-    const stateValue: task[] | undefined = useContext(StateContext)
+    const stateValue: TaskType[] | undefined = useContext(StateContext)
     console.log('stateValue:', stateValue)
 
     return (
